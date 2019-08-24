@@ -486,178 +486,60 @@ uint32_t* get_stratum_job_ntime();
 
 enum algos {
         ALGO_NULL,
-        ALGO_ALLIUM,
-        ALGO_ANIME,
-        ALGO_ARGON2,
-        ALGO_ARGON2D250,
-        ALGO_ARGON2D500,
-        ALGO_ARGON2D4096,
-        ALGO_AXIOM,       
-        ALGO_BASTION,
         ALGO_BLAKE,       
         ALGO_BLAKECOIN,   
-//        ALGO_BLAKE2B,
         ALGO_BLAKE2S,     
-        ALGO_BMW,        
-        ALGO_C11,         
-        ALGO_CRYPTOLIGHT, 
-        ALGO_CRYPTONIGHT,
-        ALGO_CRYPTONIGHTV7, 
+        ALGO_BMW,               
         ALGO_DECRED,
-        ALGO_DEEP,
-        ALGO_DMD_GR,
-        ALGO_DROP,        
-        ALGO_FRESH,       
+        ALGO_DMD_GR,         
         ALGO_GROESTL,     
-        ALGO_HEAVY,
-        ALGO_HMQ1725,
-        ALGO_HODL,
-        ALGO_JHA,
-        ALGO_KECCAK,
-        ALGO_KECCAKC,
         ALGO_LBRY,
         ALGO_LUFFA,       
-        ALGO_LYRA2H,
-        ALGO_LYRA2RE,       
-        ALGO_LYRA2REV2,   
-        ALGO_LYRA2Z,
-        ALGO_LYRA2Z330,
-        ALGO_M7M,
         ALGO_MYR_GR,      
-        ALGO_NEOSCRYPT,
-        ALGO_NIST5,       
         ALGO_PENTABLAKE,  
-        ALGO_PHI1612,
-        ALGO_PLUCK,       
-        ALGO_POLYTIMOS,
-        ALGO_QUARK,
-        ALGO_QUBIT,       
-        ALGO_SCRYPT,
-        ALGO_SCRYPTJANE,
+        ALGO_PLUCK,          
         ALGO_SHA256D,
         ALGO_SHA256T,
         ALGO_SHAVITE3,    
         ALGO_SKEIN,       
         ALGO_SKEIN2,      
-        ALGO_SKUNK,
-        ALGO_TIMETRAVEL,
-        ALGO_TIMETRAVEL10,
-        ALGO_TRIBUS,
         ALGO_VANILLA,
-        ALGO_VELTOR,
         ALGO_WHIRLPOOL,
         ALGO_WHIRLPOOLX,
-        ALGO_X11,
-        ALGO_X11EVO,         
-        ALGO_X11GOST,
-        ALGO_X12,
-        ALGO_X13,         
-        ALGO_X13SM3,
-        ALGO_X14,        
-        ALGO_X15,       
-        ALGO_X16R,
-        ALGO_X16S,
-        ALGO_X17,
-        ALGO_XEVAN,
-        ALGO_YESCRYPT,
-        ALGO_YESCRYPTR8,
-        ALGO_YESCRYPTR16,
-        ALGO_YESCRYPTR24,
-        ALGO_YESCRYPTR32,
         ALGO_YESPOWER,
         ALGO_YESPOWERR8,
         ALGO_YESPOWERR16,
         ALGO_YESPOWERR24,
         ALGO_YESPOWERR32,
-        ALGO_ZR5,
         ALGO_COUNT
 };
 static const char* const algo_names[] = {
         NULL,
-        "allium",
-        "anime",
-        "argon2",
-        "argon2d250",
-        "argon2d500",
-        "argon2d4096",
-        "axiom",
-        "bastion",
         "blake",
         "blakecoin",
-//        "blake2b",
         "blake2s",
         "bmw",
-        "c11",
-        "cryptolight",
-        "cryptonight",
-        "cryptonightv7",
         "decred",
-        "deep",
         "dmd-gr",
-        "drop",
-        "fresh",
         "groestl",
-        "heavy",
-        "hmq1725",
-        "hodl",
-        "jha",
-        "keccak",
-        "keccakc",
         "lbry",
         "luffa",
-        "lyra2h",
-        "lyra2re",
-        "lyra2rev2",
-        "lyra2z",
-        "lyra2z330",
-        "m7m",
         "myr-gr",
-        "neoscrypt",
-        "nist5",
         "pentablake",
-        "phi1612",
         "pluck",
-        "polytimos",
-        "quark",
-        "qubit",
-        "scrypt",
-        "scryptjane",
         "sha256d",
         "sha256t",
         "shavite3",
         "skein",
         "skein2",
-        "skunk",
-        "timetravel",
-        "timetravel10",
-        "tribus",
         "vanilla",
-        "veltor",
         "whirlpool",
         "whirlpoolx",
-        "x11",
-        "x11evo",
-        "x11gost",
-        "x12",
-        "x13",
-        "x13sm3",
-        "x14",
-        "x15",
-        "x16r",
-        "x16s",
-        "x17",
-        "xevan",
-        "yescrypt",
-        "yescryptr8",
-        "yescryptr16",
-        "yescryptr24",
-        "yescryptr32",
         "yespower",
         "yespowerr8",
         "yespowerr16",
         "yespowerr24",
         "yespowerr32",
-        "zr5",
         "\0"
 };
 
@@ -702,7 +584,6 @@ extern double stratum_diff;
 extern double net_diff;
 extern double net_hashrate;
 extern int opt_pluck_n;
-extern int opt_scrypt_n;
 extern double opt_diff_factor;
 extern bool opt_randomize;
 extern bool allow_mininginfo;
@@ -723,10 +604,6 @@ Options:\n\
   -a, --algo=ALGO       specify the algorithm to use\n\
                           allium        Garlicoin (GRLC)\n\
                           anime         Animecoin (ANI)\n\
-                          argon2        Argon2 Coin (AR2)\n\
-                          argon2d250    argon2d-crds, Credits (CRDS)\n\
-                          argon2d500    argon2d-dyn, Dynamic (DYN)\n\
-                          argon2d4096   argon2d-uis, Unitus (UIS)\n\
                           axiom         Shabal-256 MemoHash\n\
                           bastion\n\
                           blake         blake256r14 (SFR)\n\
@@ -734,9 +611,6 @@ Options:\n\
                           blake2s       Blake-2 S\n\
                           bmw           BMW 256\n\
                           c11           Chaincoin\n\
-                          cryptolight   Cryptonight-light\n\
-                          cryptonight   Cryptonote legacy\n\
-                          cryptonightv7 variant 7, Monero (XMR)\n\
                           decred        Blake256r14dcr\n\
                           deep          Deepcoin (DCN)\n\
                           dmd-gr        Diamond\n\
@@ -745,66 +619,30 @@ Options:\n\
                           groestl       Groestl coin\n\
                           heavy         Heavy\n\
                           hmq1725       Espers\n\
-                          hodl          Hodlcoin\n\
                           jha           jackppot (Jackpotcoin)\n\
-                          keccak        Maxcoin\n\
-                          keccakc       Creative Coin\n\
                           lbry          LBC, LBRY Credits\n\
                           luffa         Luffa\n\
-                          lyra2h        Hppcoin\n\
-                          lyra2re       lyra2\n\
-                          lyra2rev2     lyrav2, Vertcoin\n\
-                          lyra2z        Zcoin (XZC)\n\
-                          lyra2z330     Lyra2 330 rows, Zoin (ZOI)\n\
-                          m7m           Magi (XMG)\n\
                           myr-gr        Myriad-Groestl\n\
-                          neoscrypt     NeoScrypt(128, 2, 1)\n\
-                          nist5         Nist5\n\
                           pentablake    5 x blake512\n\
                           phi1612       phi, LUX coin\n\
                           pluck         Pluck:128 (Supcoin)\n\
                           polytimos\n\
-                          quark         Quark\n\
                           qubit         Qubit\n\
-                          scrypt        scrypt(1024, 1, 1) (default)\n\
-                          scrypt:N      scrypt(N, 1, 1)\n\
-                          scryptjane:nf\n\
                           sha256d       Double SHA-256\n\
                           sha256t       Triple SHA-256, Onecoin (OC)\n\
                           shavite3      Shavite3\n\
                           skein         Skein+Sha (Skeincoin)\n\
                           skein2        Double Skein (Woodcoin)\n\
-                          skunk         Signatum (SIGT)\n\
-                          timetravel    timeravel8, Machinecoin (MAC)\n\
-                          timetravel10  Bitcore (BTX)\n\
                           tribus        Denarius (DNR)\n\
                           vanilla       blake256r8vnl (VCash)\n\
                           veltor\n\
                           whirlpool\n\
                           whirlpoolx\n\
-                          x11           Dash\n\
-                          x11evo        Revolvercoin (XRE)\n\
-                          x11gost       sib (SibCoin)\n\
-                          x12           Galaxie Cash (GCH)\n\
-                          x13           X13\n\
-                          x13sm3        hsr (Hshare)\n\
-                          x14            X14\n\
-                          x15           X15\n\
-                          x16r          Ravencoin (RVN)\n\
-                          x16s          Pigeoncoin (PGN)\n\
-                          x17\n\
-                          xevan         Bitsend (BSD)\n\
-                          yescrypt      Globlboost-Y (BSTY)\n\
-                          yescryptr8    BitZeny (ZNY)\n\
-                          yescryptr16   Yenten (YTN)\n\
-                          yescryptr24   JagaricoinR (JAGAR)\n\
-                          yescryptr32   WAVI\n\
                           yespower      Sugarchain (SUGAR)\n\
                           yespowerr8    BitZeny (ZNY)\n\
                           yespowerr16   Yenten (YTN)\n\
                           yespowerr24   JagaricoinR (JAGAR)\n\
                           yespowerr32   WAVI\n\
-                          zr5           Ziftr\n\
   -o, --url=URL         URL of mining server\n\
   -O, --userpass=U:P    username:password pair for mining server\n\
   -u, --user=USERNAME   username for mining server\n\

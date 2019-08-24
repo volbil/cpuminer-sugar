@@ -41,7 +41,6 @@
 #include <jansson.h>
 #include <openssl/sha.h>
 
-
 #ifdef _MSC_VER
 #include <windows.h>
 #include <stdint.h>
@@ -3092,12 +3091,12 @@ bool check_cpu_capability ()
      bool sw_has_avx512 = false;
      bool sw_has_sha    = false;
      set_t algo_features = algo_gate.optimizations;
-     bool algo_has_sse2   = set_incl( SSE2_OPT,    algo_features );
-     bool algo_has_aes    = set_incl( AES_OPT,     algo_features );
-     bool algo_has_sse42  = set_incl( SSE42_OPT,   algo_features );
-     bool algo_has_avx2   = set_incl( AVX2_OPT,    algo_features );
-     bool algo_has_avx512 = set_incl( AVX512_OPT,  algo_features );
-     bool algo_has_sha    = set_incl( SHA_OPT,     algo_features );
+     bool algo_has_sse2   = (SSE2_OPT & algo_features) == SSE2_OPT;
+     bool algo_has_aes    = (AES_OPT & algo_features) == AES_OPT;
+     bool algo_has_sse42  = (SSE42_OPT & algo_features) == SSE42_OPT;
+     bool algo_has_avx2   = (AVX2_OPT & algo_features) == AVX2_OPT;
+     bool algo_has_avx512 = (AVX512_OPT & algo_features) == AVX512_OPT;
+     bool algo_has_sha    = (SHA_OPT & algo_features) == SHA_OPT;
      bool use_aes;
      bool use_sse2;
      bool use_sse42;
